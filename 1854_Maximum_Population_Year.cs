@@ -34,16 +34,39 @@ public class Solution
     {
 
         //Create an array for each of the 100 years for the population constraints.
+        int[] yearsPopulation = new int[100];
+
         //iterate through each of the logs
-        //  add 1 to each of the array positions for each year they were alive
+        foreach (int[] person in logs)
+        {
+            int born = person[0];
+            int death = person[1];
+            //  add 1 to each of the array positions for each year they were alive
+            for (int i = born; i < death; i++)
+            {
+                yearsPopulation[i - 1950]++;
+            }
+        }
 
-        //the position + 1950 will equal the year specified
+        //Initialise the variables to store the max year and value
+        int highestPopulation = 0;
+        int highestPopYear = 1950;
 
-        //keep track of the largest month ad only update the year if we find a larger month
-        //  we want the earliest so if they are equal then we dont want that to overwrite the previous year.
+        //Iterate through the population array to find the max year
+        for (int j = 0; j < yearsPopulation.Length; j++)
+        {
 
+            //keep track of the largest year and only update the year if we find a larger month
+            if (yearsPopulation[j] > highestPopulation)
+            {
+                highestPopulation = yearsPopulation[j];
+                //the position + 1950 will equal the year specified
+                highestPopYear = 1950 + j;
+            }
+        }
 
-        //return the largest month we found
+        //return the largest year we found
+        return highestPopYear;
     }
 }
 
