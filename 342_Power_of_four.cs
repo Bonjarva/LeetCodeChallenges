@@ -28,11 +28,18 @@ public class Solution
 {
     public bool IsPowerOfFour(int n)
     {
+        int i = 0;
+
         //Iterate through each of the powers of 4 until we find a match
-        // if we overshoot our n value return false
+        while (n != Math.Pow(4, i))
+        {
+
+            // if we overshoot our n value return false
+            if (n < Math.Pow(4, i)) return false;
+            i++;
+
+        }
         // if we find a match return true;
-
-
-
+        return true;
     }
 }
