@@ -38,5 +38,13 @@ public class Solution
         //iterate through nums until we find the exact value or the number is higher than the target.
 
         //return the index as thats either the index of where it is or where the number should be put.
+        int counter = 0;
+
+        while (counter < nums.Length && nums[counter] < target)
+        {
+            counter++;
+        }
+
+        return counter;
     }
 }
