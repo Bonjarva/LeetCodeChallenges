@@ -36,15 +36,16 @@ public class Solution
 
         //array is sorted
         //iterate through nums until we find the exact value or the number is higher than the target.
-
         //return the index as thats either the index of where it is or where the number should be put.
-        int counter = 0;
-
-        while (counter < nums.Length && nums[counter] < target)
+        for (int i = 0; i < nums.Length; i++)
         {
-            counter++;
+            if (nums[i] >= target)
+            {
+                return i;
+            }
+
         }
 
-        return counter;
+        return nums.Length;
     }
 }
