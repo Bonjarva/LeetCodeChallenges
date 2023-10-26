@@ -40,6 +40,26 @@
  
  */
 -- Solution Plan
--- Initial query to get the necessary element from the table
--- Create inner query and compare the email to match but with a different ID
+-- 1.Initial query to get the necessary element from the table
+--SELECT p.email FROM Person p
+--
+-- 2. Rejoin to Person table and compare the email to match but with a different ID
+/*
+ SELECT
+ p.email
+ FROM
+ Person p
+ JOIN Person p2 
+ ON p.email = p2.email
+ AND p.id <> p2.id
+ */
+--
 -- Group emails to get unique entries
+SELECT
+    p.email
+FROM
+    Person p
+    JOIN Person p2 ON p.email = p2.email
+    AND p.id <> p2.id
+GROUP BY
+    p.email
