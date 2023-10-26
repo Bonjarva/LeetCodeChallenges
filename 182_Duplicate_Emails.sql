@@ -55,11 +55,21 @@
  */
 --
 -- Group emails to get unique entries
+/*
+ SELECT
+ p.email
+ FROM
+ Person p
+ JOIN Person p2 ON p.email = p2.email
+ AND p.id <> p2.id
+ GROUP BY
+ p.email*/
+--Simplified query using the HAVING method
 SELECT
-    p.email
-FROM
-    Person p
-    JOIN Person p2 ON p.email = p2.email
-    AND p.id <> p2.id
-GROUP BY
-    p.email
+    email
+from
+    Person
+group by
+    email
+having
+    count(email) > 1
