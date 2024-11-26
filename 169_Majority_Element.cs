@@ -23,22 +23,25 @@ n == nums.length
 
 public class Solution {
     public int MajorityElement(int[] nums) {
-        if (nums.Length == 1) return nums[0];
+        
+        // using Boyer-Moore Majority Vote Algorithm
+        int count = 0;
+        int candidate = 0;
 
-        int majority = nums.Length/2;
-        Dictionary<int, int> numberCounter = new Dictionary<int, int>();
+        foreach(int num in nums){
+            if (count == 0){
+                candidate = num;
+                count = 1;
 
-        // iterate through array left to right, collecting count of each
-        for(int i = 0; i < nums.Length; i++ ){
-            if (numberCounter.ContainsKey(nums[i])){
-                numberCounter[nums[i]]++;
-                if (numberCounter[nums[i]] > majority ){
-                    return nums[i];
-                } 
-            } else{
-                numberCounter[nums[i]] = 1;
+            } else if(num == candidate){
+                count++;
+
+            }else{
+                count--;
             }
+
         }
-        return 0;
+        return candidate;
+
     }
 }
