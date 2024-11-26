@@ -20,7 +20,6 @@ n == nums.length
 1 <= n <= 5 * 104
 -109 <= nums[i] <= 109*/
 
-
 public class Solution {
     public int MajorityElement(int[] nums) {
         
@@ -31,17 +30,9 @@ public class Solution {
         foreach(int num in nums){
             if (count == 0){
                 candidate = num;
-                count = 1;
-
-            } else if(num == candidate){
-                count++;
-
-            }else{
-                count--;
-            }
-
+            } 
+            count += (num == candidate) ? 1 : -1;
         }
         return candidate;
-
     }
 }
