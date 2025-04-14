@@ -25,3 +25,25 @@ Constraints:
 1 <= prices.length <= 105
 0 <= prices[i] <= 104
 */
+
+public class Solution {
+    public int MaxProfit(int[] prices) {
+        
+        // Stored variable for max price 
+        int profit = 0;
+
+
+        //two pointers, one for buying the stock, one for selling
+        
+        for (int i = 0; i < prices.Length -1 ; i++){
+            for (int j = i+1; j < prices.Length; j++){
+                if (prices[j]-prices[i] > profit){
+                    profit = prices[j]-prices[i];
+                }
+            }
+        }
+    
+
+        return profit;
+    }
+}
