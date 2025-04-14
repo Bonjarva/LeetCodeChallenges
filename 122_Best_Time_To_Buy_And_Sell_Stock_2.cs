@@ -33,3 +33,45 @@ Constraints:
 0 <= prices[i] <= 104
 
 */
+
+public class Solution {
+    public int MaxProfit(int[] prices) {
+        
+        // having the min price and max price variables stored
+        // then when we hit a new low we sell at the last high we had
+        // add the profit to our total
+
+
+        // Stored variable for max price 
+        int profit = 0;
+        int lowestPrice = prices[0];
+        int HighestPrice = prices[0];
+
+
+        for (int i = 1; i < prices.Length; i++){
+
+            // trigger for sell is if we have a value lower than our current high
+            if(prices[i] < HighestPrice){
+
+                profit += (HighestPrice - lowestPrice);
+                lowestPrice = prices[i];
+                HighestPrice = prices[i];
+
+            } else if (prices[i] > HighestPrice) {
+                 //Check if new highest
+                HighestPrice = prices[i];
+                
+            } else if (prices[i] < lowestPrice){
+            // check if this is the lowest price we've seen
+                lowestPrice = prices[i];          
+            }
+        }
+
+        /// selling if its at the end?
+        if (lowestPrice < HighestPrice){
+            profit += (HighestPrice - lowestPrice);
+        }
+
+        return profit;
+    }
+}
