@@ -30,3 +30,43 @@ Follow up:
 
 Try to come up with as many solutions as you can. There are at least three different ways to solve this problem.
 Could you do it in-place with O(1) extra space?*/
+
+public class Solution {
+    public void Rotate(int[] nums, int k) {
+        
+        int n = nums.Length;
+
+        // break k into a single shift location within the array instead of interating continueously to get to the final destination
+        k = k % n;
+    
+        //if we are to move the array a full cycle or multiple of a full cycle the array wont move.
+        if (k == 0) return;
+
+        // Variable initialisation
+        int prevValue = 0;        
+        int currValue = 0;
+        int index = 0;
+        int cycleStartIndex = 0;
+        int count = 0;
+
+
+        while(count < n){
+
+                // to avoid cycles we need to track when we get back to our starting index
+                index = cycleStartIndex;
+                prevValue = nums[index];
+
+                //logic to move records
+                do{
+                    index = (index + k) % n;
+                    currValue = nums[index];
+                    nums[index] = prevValue;
+                    prevValue = currValue;
+                    count++;
+                }while(index != cycleStartIndex);
+                cycleStartIndex++;
+        }
+
+        return;
+    }
+}
