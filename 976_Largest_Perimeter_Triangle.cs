@@ -8,27 +8,22 @@ public class Solution {
         //sort the array and work from back to front
         
         Array.Sort(nums);
-
-        int sideA = nums.Length - 3; //left most index
-        int sideB = nums.Length - 2;
-        int sideC = nums.Length - 1; //Largest index
-
+        int index = nums.Length - 3;
 
         //continue until we find a combination that satisfies a triangle
-        while(nums[sideC] >= nums[sideB] + nums[sideA]){
+        while(nums[index+2] >= nums[index+1] + nums[index]){
 
             //condition for reaching end of array then return 0
-            if(sideC == 2){
+            if(index == 0){
                 return 0;
             }
 
-            sideC--;
-            sideB--;
-            sideA--;
+            index--;
+
         }
 
 
         //Return total perimeter
-        return nums[sideA] + nums[sideB] + nums[sideC];
+        return nums[index] + nums[index+1] + nums[index+2];
     }
 }
