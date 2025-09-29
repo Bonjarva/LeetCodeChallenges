@@ -8,22 +8,11 @@ public class Solution {
         //sort the array and work from back to front
         
         Array.Sort(nums);
-        int index = nums.Length - 3;
-
-        //continue until we find a combination that satisfies a triangle
-        while(nums[index+2] >= nums[index+1] + nums[index]){
-
-            //condition for reaching end of array then return 0
-            if(index == 0){
-                return 0;
+        for(int i = nums.Length - 3 ; i >= 0 ; i--){
+            if(nums[i+2] < nums[i+1] + nums[i]){
+                return nums[i] + nums[i+1] + nums[i+2];
             }
-
-            index--;
-
         }
-
-
-        //Return total perimeter
-        return nums[index] + nums[index+1] + nums[index+2];
+        return 0;
     }
 }
