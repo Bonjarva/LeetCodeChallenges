@@ -22,17 +22,9 @@ public class Solution {
                 return 0;
             }
 
-            if(sideA == 0){
-                if(sideB == 1){
-                    sideC--;
-                    sideB = sideC-1;
-                    sideA = sideC-2;
-                }else{
-                    sideB--;
-                }
-            }else{
-                sideA--;
-            }
+            sideC--;
+            sideB--;
+            sideA--;
         }
 
 
