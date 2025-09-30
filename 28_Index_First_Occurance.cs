@@ -9,11 +9,14 @@ public class Solution {
         // continue loop until index is arrayLength - needleLength?
             //we know it cant be in the final letters as its too short
 
-        if(haystack.IndexOf(needle[0]) != -1 && needle.Length <= haystack.Length){
+        int n = needle.Length;
+        int h = haystack.Length;
+
+        if(haystack.IndexOf(needle[0]) != -1 && n <= h){
             int index = haystack.IndexOf(needle[0]);
 
-            while(index <= haystack.Length - needle.Length && index != -1){
-                if(haystack.Substring(index, needle.Length).Equals(needle)){
+            while(index <= h - n && index != -1){
+                if(haystack.Substring(index, n).Equals(needle)){
                     //Match substring
                     return index;
                 } else{
