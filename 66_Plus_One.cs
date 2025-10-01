@@ -21,8 +21,9 @@ public class Solution {
                 
                 //Need new case for adding one more digit - [9] +1 = [1], [0]
                 // create new array with 1 and append old array?
-            
-                return new[] {1}.Concat(digits).ToArray();
+                int[] newArray = new int[digits.Length + 1];
+                newArray[0] = 1;
+                return newArray;
             }
         }
         return digits;
